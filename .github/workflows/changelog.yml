@@ -24,6 +24,7 @@ jobs:
       - name: Create new commit
         run: |
           # write hash to file
+          git pull
           echo "${{ github.sha }}" > hash.txt
           # commit and push
           git config --global user.name 'gruebel'
