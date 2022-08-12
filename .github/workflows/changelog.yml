@@ -1,0 +1,34 @@
+name: Changelog
+
+on:
+  push:
+    branches:
+      - main
+
+permissions: read-all
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b  # v3.0.2
+        with:
+          ref: master
+          fetch-depth: 0
+      - uses: BobAnkh/auto-generate-changelog@4a2eb69805db4af39f374dc95eb502669fb4af95  # v1
+        with:
+          ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PATH: 'CHANGELOG.md'
+          TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation'
+      - name: Create new commit
+        run: |
+          # write hash to file
+          echo "${{ github.sha }}" > hash.txt
+          # commit and push
+          git config --global user.name 'gruebel'
+          git config --global user.email 'gruebel@users.noreply.github.com'
+          git add hash.txt
+          git commit -m "update hash.txt"
+          git push
