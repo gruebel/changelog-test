@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.1.4](https://github.com/gruebel/changelog-test/releases/tag/2.1.4) - 2022-08-12 20:07:52
+
+*No description*
+
+### Feature
+
+- hash:
+  - add more stuff in hash file ([b77facf](https://github.com/gruebel/changelog-test/commit/b77facf45d2c0ad21dee8307689bd10e7ab5c0ce))
+  - add extra stuff in hash file ([029e79a](https://github.com/gruebel/changelog-test/commit/029e79a87f9e0bdc291cba2fdc0576c287570261))
+
 ## [2.1.1](https://github.com/gruebel/changelog-test/releases/tag/2.1.1) - 2022-08-12 19:33:26
 
 test
