@@ -7,6 +7,7 @@ test
 ### Bug Fixes
 
 - general:
+  - some extra comment
   - add ps permissions ([33fa47e](https://github.com/gruebel/changelog-test/commit/33fa47e4dbba55f1a4153dcba1b111e7cff4cb77))
 
 ## [1](https://github.com/gruebel/changelog-test/releases/tag/1) - 2022-08-12 13:54:53
