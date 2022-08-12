@@ -21,14 +21,3 @@ jobs:
           ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
           PATH: 'CHANGELOG.md'
           TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation'
-      - name: Create new commit
-        run: |
-          # write hash to file
-          git pull
-          echo "${{ github.sha }}" > hash.txt
-          # commit and push
-          git config --global user.name 'gruebel'
-          git config --global user.email 'gruebel@users.noreply.github.com'
-          git add hash.txt
-          git commit -m "update hash.txt"
-          git push
