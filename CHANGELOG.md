@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.1.6](https://github.com/gruebel/changelog-test/releases/tag/2.1.6) - 2022-08-17 09:19:32
+
+minor improvements and fixes
+
+### Feature
+
+- hash:
+  - added new line to hash file ([05253b3](https://github.com/gruebel/changelog-test/commit/05253b39af517e5ada0db4b3ea1babaddc8e7835))
+  - change line in hash file (#1) ([c9210c0](https://github.com/gruebel/changelog-test/commit/c9210c019ed5e5d0c116241648603a955119af09)) ([#1](https://github.com/gruebel/changelog-test/pull/1))
+
 ## [2.1.4](https://github.com/gruebel/changelog-test/releases/tag/2.1.4) - 2022-08-12 20:07:52
 
 *No description*
