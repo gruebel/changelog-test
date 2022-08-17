@@ -38,9 +38,9 @@ jobs:
         if: steps.prepare_release.outputs.create_release == 'true'
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5  # v1
         with:
-          tag_name: ${{ steps.version.prepare_release.version }}
-          name: ${{ steps.version.prepare_release.version }}
-          body: ${{ steps.version.prepare_release.notes }}
+          tag_name: ${{ steps.prepare_release.outputs.version }}
+          name: ${{ steps.prepare_release.outputs.version }}
+          body: ${{ steps.prepare_release.outputs.notes }}
       - name: Update CHANGELOG.md
         if: steps.prepare_release.outputs.create_release == 'true'
         uses: BobAnkh/auto-generate-changelog@4a2eb69805db4af39f374dc95eb502669fb4af95  # v1
