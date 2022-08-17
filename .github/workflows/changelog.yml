@@ -1,8 +1,6 @@
 name: Changelog
 
 on:
-  release:
-    types: [created]
   workflow_dispatch:
 
 permissions: read-all
@@ -14,11 +12,39 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b  # v3.0.2
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b  # v3
         with:
           fetch-depth: 0
-      - uses: BobAnkh/auto-generate-changelog@4a2eb69805db4af39f374dc95eb502669fb4af95  # v1
+      - name: Prepare Release
+        id: prepare_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          # grab latest release and tag to compare and decide to create a new one
+          create_release=true
+          latest_gh_release=$(curl -s https://api.github.com/repos/bridgecrewio/checkov/releases/latest  | grep -Po '"tag_name": "\K.*?(?=")')
+          latest_tag=$(git describe --abbrev=0 --tags)
+          
+          if [ $latest_gh_release -eq $latest_tag ]
+          then
+            create_release=false
+          fi
+          
+          release_notes="minor improvements and fixes"
+          echo "::set-output name=create_release::$create_release"
+          echo "::set-output name=version::$latest_tag"
+          echo "::set-output name=notes::$release_notes"
+      - name: Create GitHub Release
+        if: steps.prepare_release.outputs.create_release == 'true'
+        uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5  # v1
+        with:
+          release_name: ${{ steps.version.prepare_release.version }}
+          tag_name: ${{ steps.version.prepare_release.version }}
+          body: ${{ steps.version.prepare_release.notes }}
+      - name: Update CHANGELOG.md
+        if: steps.prepare_release.outputs.create_release == 'true'
+        uses: BobAnkh/auto-generate-changelog@4a2eb69805db4af39f374dc95eb502669fb4af95  # v1
         with:
           ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          PATH: 'CHANGELOG.md'
-          TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation'
+          PATH: "CHANGELOG.md"
+          TYPE: "feat:Feature,fix:Bug Fixes,docs:Documentation"
