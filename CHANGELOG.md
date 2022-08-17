@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.1.7](https://github.com/gruebel/changelog-test/releases/tag/2.1.7) - 2022-08-17 10:22:00
+
+minor improvements and fixes
+
+### Bug Fixes
+
+- hash:
+  - remove line (#2) ([58fe937](https://github.com/gruebel/changelog-test/commit/58fe9379de41a70170fe7ed8bf027ec5e6a8fcaf)) ([#2](https://github.com/gruebel/changelog-test/pull/2))
+
 ## [2.1.6](https://github.com/gruebel/changelog-test/releases/tag/2.1.6) - 2022-08-17 09:19:32
 
 minor improvements and fixes
