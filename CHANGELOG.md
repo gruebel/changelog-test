@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [2.1.10](https://github.com/gruebel/changelog-test/releases/tag/2.1.10) - 2022-08-17 21:29:44
+
+minor improvements and fixes
+
+### Feature
+
+- terraform:
+  - add CKV_AWS_123 to ensure that VPC Endpoint Service is configured for Manual Acceptance (#4) ([59a0cd9](https://github.com/gruebel/changelog-test/commit/59a0cd9e3668de0e8a37be608cf78567c1a1d111)) ([#4](https://github.com/gruebel/changelog-test/pull/4))
+
 ## [2.1.7](https://github.com/gruebel/changelog-test/releases/tag/2.1.7) - 2022-08-17 10:22:00
 
 minor improvements and fixes
