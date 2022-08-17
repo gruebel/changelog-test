@@ -25,7 +25,7 @@ jobs:
           latest_gh_release=$(curl -s https://api.github.com/repos/bridgecrewio/checkov/releases/latest  | grep -Po '"tag_name": "\K.*?(?=")')
           latest_tag=$(git describe --abbrev=0 --tags)
           
-          if [ $latest_gh_release -eq $latest_tag ]
+          if [ "$latest_gh_release" -eq "$latest_tag" ]
           then
             create_release=false
           fi
@@ -38,8 +38,8 @@ jobs:
         if: steps.prepare_release.outputs.create_release == 'true'
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5  # v1
         with:
-          release_name: ${{ steps.version.prepare_release.version }}
           tag_name: ${{ steps.version.prepare_release.version }}
+          name: ${{ steps.version.prepare_release.version }}
           body: ${{ steps.version.prepare_release.notes }}
       - name: Update CHANGELOG.md
         if: steps.prepare_release.outputs.create_release == 'true'
