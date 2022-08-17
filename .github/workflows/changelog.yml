@@ -1,6 +1,9 @@
-name: Changelog
+name: changelog
 
 on:
+  schedule:
+    # daily at 23:00 UTC
+    - cron: "0 23 * * *"
   workflow_dispatch:
 
 permissions: read-all
@@ -47,4 +50,4 @@ jobs:
         with:
           ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
           PATH: "CHANGELOG.md"
-          TYPE: "feat:Feature,fix:Bug Fixes,docs:Documentation"
+          TYPE: "feat:Feature,fix:Bug Fix,break:Breaking Change,docs:Documentation"
