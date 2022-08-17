@@ -25,7 +25,7 @@ jobs:
           latest_gh_release=$(curl -s https://api.github.com/repos/gruebel/changelog-test/releases/latest  | grep -Po '"tag_name": "\K.*?(?=")')
           latest_tag=$(git describe --abbrev=0 --tags)
           
-          if [ "${latest_gh_release}" -eq "${latest_tag}" ]
+          if [ "$latest_gh_release" = "$latest_tag" ]
           then
             create_release=false
           fi
