@@ -1,9 +1,9 @@
 name: changelog
 
 on:
-  schedule:
-    # daily at 23:00 UTC
-    - cron: "0 23 * * *"
+#  schedule:
+#    # daily at 23:00 UTC
+#    - cron: "0 23 * * *"
   workflow_dispatch:
 
 permissions: read-all
